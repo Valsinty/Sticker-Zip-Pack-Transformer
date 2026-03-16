@@ -2,12 +2,13 @@ import os
 import json
 import subprocess
 
-token = os.environ["BOT_TOKEN"]
+token = os.environ.get("BOT_TOKEN")
 
-with open("config.json") as f:
-    config = json.load(f)
-
-config["bot_token"] = token
+config = {
+    "bot_token": token,
+    "default_emoji": "👍",
+    "default_name": "new_pack"
+}
 
 with open("config.json", "w") as f:
     json.dump(config, f)
